@@ -1,0 +1,13 @@
+[Wed May 10 10:55:26 EDT 2017] INFO (OpenGG): Loading native libraries...
+[Wed May 10 10:55:26 EDT 2017] INFO (OpenGG): OpenGG initializing, running on Windows 8.1, amd64
+[Wed May 10 10:55:26 EDT 2017] INFO (OpenGG): Window generation successful, using OpenGL context version 4.1
+[Wed May 10 10:55:26 EDT 2017] INFO (ShaderController): Default shaders loaded and validated
+[Wed May 10 10:55:26 EDT 2017] INFO (ModelLoader): Loading model at C:\Users\Javier\Documents\NetBeansProjects\TraffickingSim\TraffickingSim\dist\resources\models\default\default.bmf...
+[Wed May 10 10:55:27 EDT 2017] WARNING (ModelLoader): Failed to load model at C:\Users\Javier\Documents\NetBeansProjects\TraffickingSim\TraffickingSim\dist\resources\models\default\default.bmf, using default model instead
+[Wed May 10 10:55:27 EDT 2017] INFO (OpenGG): Render engine initialized
+[Wed May 10 10:55:27 EDT 2017] INFO (OpenGG): Audio controller initialized
+[Wed May 10 10:55:27 EDT 2017] INFO (OpenGG): Application setup complete
+[Wed May 10 10:55:28 EDT 2017] INFO (RenderEngine): Render engine has finalized
+[Wed May 10 10:55:28 EDT 2017] INFO (AudioController): Audio controller has finalized
+[Wed May 10 10:55:28 EDT 2017] INFO (OpenGG): OpenGG has closed gracefully, application can now be ended
+
