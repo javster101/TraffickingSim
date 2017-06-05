@@ -1,11 +1,19 @@
-[Tue May 16 13:39:43 EDT 2017] INFO (OpenGG): Loading native libraries...
-[Tue May 16 13:39:43 EDT 2017] INFO (OpenGG): OpenGG initializing, running on Windows 8.1, amd64
-[Tue May 16 13:39:44 EDT 2017] INFO (OpenGG): Window generation successful, using OpenGL context version 4.1
-[Tue May 16 13:39:44 EDT 2017] ERROR (OpenGG): Uncaught exception: Failed to load a shader file!
-C:\Users\Javier\Documents\NetBeansProjects\TraffickingSim\TraffickingSim\dist\resources\glsl\hdr.frag (The system cannot find the file specified)
-[Tue May 16 13:39:44 EDT 2017] INFO (RenderEngine): Render engine has finalized
-[Tue May 16 13:39:44 EDT 2017] INFO (AudioController): Audio controller has finalized
-[Tue May 16 13:39:44 EDT 2017] INFO (OpenGG): OpenGG has closed gracefully, application can now be ended
+[Mon Jun 05 10:32:16 EDT 2017] INFO (OpenGG): Loading native libraries...
+[Mon Jun 05 10:32:16 EDT 2017] INFO (OpenGG): LWJGL has been loaded
+[Mon Jun 05 10:32:16 EDT 2017] INFO (OpenGG): OpenGG initializing, running on Windows 8.1, amd64
+[Mon Jun 05 10:32:16 EDT 2017] INFO (OpenGG): Window generation successful, using OpenGL context version 4.1
+[Mon Jun 05 10:32:17 EDT 2017] INFO (ShaderController): Default shaders loaded and validated
+[Mon Jun 05 10:32:17 EDT 2017] INFO (ModelLoader): Loading model at C:\Users\Javier\Documents\NetBeansProjects\TraffickingSim\TraffickingSim\dist\resources\models\default\default.bmf...
+[Mon Jun 05 10:32:17 EDT 2017] WARNING (ModelLoader): Failed to load model at C:\Users\Javier\Documents\NetBeansProjects\TraffickingSim\TraffickingSim\dist\resources\models\default\default.bmf, using default model instead
+[Mon Jun 05 10:32:17 EDT 2017] INFO (OpenGG): Render engine initialized
+[Mon Jun 05 10:32:17 EDT 2017] INFO (OpenGG): Audio controller initialized
+[Mon Jun 05 10:32:17 EDT 2017] INFO (OpenGG): Application setup beginning
+[Mon Jun 05 10:32:17 EDT 2017] INFO (OpenGG): Application setup complete
+[Mon Jun 05 10:32:43 EDT 2017] ERROR (OpenGG): Uncaught exception: null
+[Mon Jun 05 10:32:43 EDT 2017] INFO (OpenGG): Render engine has finalized
+[Mon Jun 05 10:32:43 EDT 2017] INFO (OpenGG): Audio controller has been finalized
+[Mon Jun 05 10:32:43 EDT 2017] INFO (OpenGG): Thread Manager has closed all remaining threads
+[Mon Jun 05 10:32:43 EDT 2017] INFO (OpenGG): OpenGG has closed gracefully, application can now be ended
 OpenGG Engine Version: 0.0.1a1
 
 System Information
@@ -20,7 +28,7 @@ JVM Name: Java HotSpot(TM) 64-Bit Server VM
 JVM Vendor: Oracle Corporation
 Maximum Runtime Memory: 934281216
 Used Runtime Memory: 64487424
-Free Runtime Memory: 61450424
+Free Runtime Memory: 61786048
 JVM CPU Availability: 4
 
 Engine Information

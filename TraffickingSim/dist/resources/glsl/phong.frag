@@ -30,6 +30,9 @@ struct Light
     vec3 color;
 	float lightdistance;
 	float lightdistance2;
+	int shadow;
+	mat4 view;
+	mat4 perspective;
 };
 
 layout (std140) uniform LightBuffer {
@@ -60,7 +63,7 @@ float vis = 1;
 
 float trans;
 float specpow;
-float visibility = 1f;
+float visibility = 1.0f;
 vec3 eyedir;
 vec3 reflectedcolor;
 vec3 n;
@@ -96,12 +99,9 @@ vec3 calculatenormal( vec3 N, vec3 V, vec2 texcoord ){
 
 
 void genPhong(){
-    vec3 positionRelativeToCam = (view * model * vec4(pos.xyz, 1.0f)).xyz;
-    
-    vec3 posCameraspace = (positionRelativeToCam);
-    eyedir = vec3(0,0,0) - posCameraspace;
+    eyedir = normalize(camera - pos.xyz);
 
-    float distance = length(positionRelativeToCam.xyz);
+    float distance = length(camera - pos.xyz);
 
     visibility = exp(-pow((distance*density),gradient));
     visibility = clamp(visibility,0.0,1.0);
@@ -123,7 +123,7 @@ vec4 getTex(sampler2D tname){
 vec3 shadify(Light light){
 
 	float distance = length( light.lightpos - pos.xyz ); 
-	float attenuation =  clamp((1.0 - distance/light.lightdistance), 0.0, 1.0);
+	float attenuation =  clamp((1.0 - (distance/light.lightdistance) * (distance/light.lightdistance)), 0.0, 10.0);
 	attenuation = attenuation * attenuation;
 
 	vec3 lightDir = normalize(light.lightpos - pos.xyz);
@@ -157,7 +157,7 @@ void process(){
     
     specular = vec3(1,1,1);
     
-    specpow = 1;
+    specpow = 32;
     if(material.hasspecpow){
         vec4 specpowvec = getTex(Ns);
         specpow = specpowvec.r * 32;
@@ -170,15 +170,15 @@ void process(){
     }else{
         specular = material.ks;
     }
-	n = normalize(( view * model * vec4(norm,0.0f)).xyz);
+	
     
     if(material.hasnormmap){
-       n = calculatenormal(n,eyedir,textureCoord);
-    }
+		n = calculatenormal(normalize(norm),pos.xyz-camera,textureCoord);
+    }else{
+		n = normalize((model * vec4(norm,0.0f)).xyz);
+	}
 	
-	reflectedcolor = texture(cubemap, 
-		normalize(reflect(pos.xyz - camera, 
-			normalize(model * vec4(norm, 0.0f)).xyz))).xyz;
+	reflectedcolor = texture(cubemap, normalize(reflect(eyedir,n))).xyz;
 	
 }
 

@@ -23,6 +23,7 @@ public class State {
     float gunmarket;
     float violence;
     float ownership;
+    float crimeguns;
     
     float surplus;
     float armed;
@@ -54,15 +55,31 @@ public class State {
         armed += newarmed;
         guns += newguns;
         population *= 1.0069;
-        desire = (float) (Math.pow(((violence / 100000) * population), 0.3f) + 
+        desire = (float) (Math.pow(((violence / 100000) * population), 1.1f) + 
                 (((partisan) * ((population-armed)/population)) * population * gunlaws * 
-                (AmericaComponent.president.lawstrength + 0.5 + (AmericaComponent.president.republican ? -0.2 : 0.2)) * gunlaws * 0.6f)) * 0.6f;
-        violence += -(((gunlaws - 0.5f) * (violence/1000)) + ((armed / population) * ((1-gunlaws)-0.5f) * 0.6f)) * 0.25f;
-        legalinflux += -(surplus * (1f - gunlaws) * 0.2f);
+                (AmericaComponent.president.lawstrength + 0.5 + (AmericaComponent.president.republican ? -0.2 : 0.2)) * gunlaws * 0.6f)) * 0.3f;
+        violence += -(((gunlaws - 0.5f) * (violence/1000)) + ((armed / population) * ((1-gunlaws)-0.5f) * 0.6f)) * 0.25f * (1 + (crimeguns / guns));
+        legalinflux += -(surplus * (1.2f - gunlaws) * 0.3f);
         if(legalinflux < 0)
-            legalinflux = 0;
-        if(legalinflux > population * 0.1f * (1f-gunlaws))
-            legalinflux = population * 0.1f * (1f-gunlaws);
+            legalinflux = armed * 0.07f;
+        if(legalinflux > population * 0.1f * (1.2f-gunlaws))
+            legalinflux = population * 0.1f * (1.2f-gunlaws);
         surplus += legalinflux - desire;
+        
+        if(surplus < 0){
+            float request = surplus * 1.3f - gunlaws;
+            if(surplus < request)
+                request = surplus;
+            AmericaComponent.request(name, (int) request);
+        }
+    }
+    
+    public void addFirearms(int num){
+        float newguns = num;
+        float newarmed = newguns / 1.8f;
+        armed += newarmed;
+        guns += newguns;
+        crimeguns += newguns;
+        surplus += num;
     }
 }
